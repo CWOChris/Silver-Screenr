@@ -4,7 +4,7 @@ const { Movie, User } = require("../models");
 const express = require("express");
 const { authCheck } = require("../utils/auth");
 
-// TODO: route for homepage with all blog posts. NO LOGIN NEEDED.
+// TODO: route for homepage with all public movies. NO LOGIN NEEDED.
 router.get("/", async (req, res) => {
   try {
     const publicMovies = await Movie.findAll({
@@ -25,10 +25,13 @@ router.get("/", async (req, res) => {
       movie.get({ plain: true })
     );
 
+    //render in handlebars
     // res.render("homepage", {
     //   allPublicMovies,
     //   loggedIn: req.session.loggedIn,
     // });
+
+    //comment this out if rendering in handlebars
     console.log(allPublicMovies);
     res.status(200).json(allPublicMovies);
   } catch (err) {
@@ -36,5 +39,37 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//route to get all movies from a single user. authCheck should be used,
+router.get(
+  "/user/:id",
+  // authCheck, //turned off for testing
+  async (req, res) => {
+    try {
+      const userMovies = await Movie.findAll({
+        where: {
+          user_id: req.params.id,
+        },
+      });
+
+      const allUserMovies = userMovies.map((movie) =>
+        movie.get({ plain: true })
+      );
+
+      //render in handlebars
+      // res.render("userpage", {
+      //   allUserMovies,
+      //   loggedIn: req.session.loggedIn,
+      // });
+
+      //comment this out if rendering in handlebars
+      console.log(allUserMovies);
+      res.status(200).json(allUserMovies);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+);
 
 module.exports = router;
