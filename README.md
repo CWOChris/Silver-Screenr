@@ -1,7 +1,7 @@
 # Silver Screenr
 
 ## Table of Contents
-* [What is the Oaken Hollow Games Web App](#what-is-the-Silver-Screenr)
+* [What is the Silver Screenr](#what-is-the-Silver-Screenr)
 * [Installation](#Installation)
 * [How to Use the Silver Screenr](#how-to-use-the-Silver-Screenr)
 * [Credits](#Credits)
