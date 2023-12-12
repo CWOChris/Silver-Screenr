@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   try {
     const publicMovies = await Movie.findAll({
       where: {
-        public: true,
+        is_public: true,
       },
       include: [
         {
@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
     //   allPublicMovies,
     //   loggedIn: req.session.loggedIn,
     // });
+    console.log(allPublicMovies);
     res.status(200).json(allPublicMovies);
   } catch (err) {
     console.log(err);
