@@ -3,9 +3,8 @@ const Movie = require("./Movie");
 
 // TODO: USER has many Movie
 
-User.hasmany(Movie, {
+User.hasMany(Movie, {
   foreignKey: "post_id",
-  onDelete: "CASCADE",
 });
 
 // // TODO: Movie has one User

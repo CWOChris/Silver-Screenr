@@ -11,7 +11,7 @@ Movie.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    tmbd_id: {
+    tmdb_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -23,7 +23,7 @@ Movie.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    PUBLIC: {
+    is_public: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
