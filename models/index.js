@@ -4,7 +4,7 @@ const Movie = require("./Movie");
 // TODO: USER has many Movie
 
 User.hasMany(Movie, {
-  foreignKey: "post_id",
+  foreignKey: "user_id",
 });
 
 // // TODO: Movie has one User
