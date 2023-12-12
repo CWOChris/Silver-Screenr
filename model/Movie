@@ -1,0 +1,40 @@
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+
+class Movie extends Model {}
+
+Movie.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    tmbd_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    user_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    user_comment: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    PUBLIC: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "movie",
+  }
+);
+
+module.exports = Movie;
