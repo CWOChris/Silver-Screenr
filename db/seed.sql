@@ -1,0 +1,4 @@
+INSERT INTO silver_screenr_db.user (id, username, email, password) VALUES ( '1',  'Shagomir', 'm.j.knudson@gmail.com', '$2b$10$AUSai4ho.HBQt.IkpS9OtuRPdZGVsOmk2oqkp96ofaw//W6kxj7lS');
+
+INSERT INTO silver_screenr_db.movie (id, tmdb_id, user_rating, user_comment, is_public, created_at, updated_at, user_id) VALUES ('1', '36953', '10', 'Its really good', '1', '2023-12-11 00:00:00', '2023-12-11 00:00:00', '1');
+INSERT INTO silver_screenr_db.movie (id, tmdb_id, user_rating, user_comment, is_public, created_at, updated_at, user_id) VALUES ('2', '12591', '10', 'very good also', '0', '2023-12-11 00:00:00', '2023-12-11 00:00:00', '1');
