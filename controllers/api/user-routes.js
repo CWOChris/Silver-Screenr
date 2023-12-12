@@ -5,7 +5,7 @@ const express = require("express");
 const { authCheck } = require("../../utils/auth");
 
 router.get(
-  "/user/:id",
+  "/:id",
   // authCheck, //turned off for testing
   async (req, res) => {
     try {

@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
 
 //All of these can be one route, only include the parameters that need to be updated in the req.body
 //
-//Example of update with all params
+//Example of update with ALL params
 //{
 //  user_rating: INTEGER,
 //  user_comment: TEXT,
@@ -80,7 +80,7 @@ router.put("/:id", async (req, res) => {
 
     await updateMovie.save();
     res.status(200).json(updateMovie);
-  } catch (error) {
+  } catch (err) {
     console.log(err);
     res.json(err);
   }
@@ -95,7 +95,7 @@ router.put("/unwatch/:id", async (req, res) => {
 
     await updateMovie.save();
     res.status(200).json(updateMovie);
-  } catch (error) {
+  } catch (err) {
     console.log(err);
     res.json(err);
   }
