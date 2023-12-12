@@ -72,4 +72,34 @@ router.get(
   }
 );
 
+//TODO: Login
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("login");
+});
+
+
+//TODO: Sign Up  Page
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("signup");
+});
+
+//TODO: User Preferences  - auth required
+
+
+
+
+
+
+//TODO: routes for sorted movie data? added on date, watched/reviewed date
+
 module.exports = router;

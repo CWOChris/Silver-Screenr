@@ -27,6 +27,11 @@ Movie.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+      set: function (value) {
+        if (value === "true") value = true;
+        if (value === "false") value = false;
+        this.setDataValue("is_public", value);
+      },
     },
   },
   {
