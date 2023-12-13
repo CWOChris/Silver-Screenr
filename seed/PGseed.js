@@ -1,4 +1,4 @@
-//this will seed the postgres data - make sure you have a POSTGRES_DB variable in your .env file. 
+//this will seed the postgres data - make sure you have a POSTGRES_DB variable in your .env file. only run this manually.
 
 const Sequelize = require("sequelize");
 require("dotenv").config();

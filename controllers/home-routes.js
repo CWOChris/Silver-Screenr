@@ -4,8 +4,16 @@ const { Movie, User } = require("../models");
 const express = require("express");
 const { authCheck } = require("../utils/auth");
 
-// TODO: route for homepage with all public movies. NO LOGIN NEEDED.
+//route to homepage/login
 router.get("/", async (req, res) => {
+  // render in handlebars;
+  res.render("homepage", {
+    loggedIn: req.session.loggedIn,
+  });
+});
+
+// public page with all public movies
+router.get("/public", async (req, res) => {
   try {
     const publicMovies = await Movie.findAll({
       where: {
@@ -82,7 +90,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 //TODO: Sign Up  Page
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
@@ -94,11 +101,6 @@ router.get("/signup", (req, res) => {
 });
 
 //TODO: User Preferences  - auth required
-
-
-
-
-
 
 //TODO: routes for sorted movie data? added on date, watched/reviewed date
 
