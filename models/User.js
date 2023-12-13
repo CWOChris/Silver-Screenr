@@ -35,6 +35,16 @@ User.init(
         len: [6],
       },
     },
+    default_public: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+      set: function (value) {
+        if (value === "true") value = true;
+        if (value === "false") value = false;
+        this.setDataValue("is_public", value);
+      },
+    },
   },
   {
     hooks: {
