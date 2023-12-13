@@ -38,18 +38,38 @@ router.get("/", async (req, res) => {
 //{
 //  tmdb_id: INTEGER,
 //  user_id: INTEGER,
-//  is_public: BOOLEAN
 // }
 
 router.post("/", async (req, res) => {
-  Movie.create(req.body)
-    .then((status) => {
-      // Send the output of the model.create as the response. Should be true or false.
-      res.json(status);
-    })
-    .catch((err) => {
-      res.json(err);
+  try {
+    const matchCheck = await Movie.findAndCountAll({
+      where: { tmdb_id: req.body.tmdb_id, user_id: req.body.user_id },
     });
+    console.log(matchCheck);
+    if (matchCheck.count > 0) {
+      res.status(400).json("Movie Already Exists");
+      return;
+    }
+
+    const publicSettingData = await User.findByPk(req.body.user_id, {
+      attributes: ["default_public"],
+    });
+
+    const publicSetting = publicSettingData.get({ plain: true });
+    console.log(publicSetting);
+
+    const newMovie = {
+      tmdb_id: req.body.tmdb_id,
+      user_id: req.body.user_id,
+      is_public: publicSetting.default_public,
+    };
+    await Movie.create(newMovie);
+
+    res.status(200).json(newMovie);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 //TODO: add rating and review to movie - auth required
@@ -82,7 +102,7 @@ router.put("/:id", async (req, res) => {
     res.status(200).json(updateMovie);
   } catch (err) {
     console.log(err);
-    res.json(err);
+    res.status(400).json(err);
   }
 });
 
