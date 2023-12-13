@@ -1,5 +1,5 @@
 # Silver Screenr
-
+https://silver-screenr.onrender.com/
 ## Table of Contents
 * [What is the Silver Screenr](#what-is-the-Silver-Screenr)
 * [Installation](#Installation)
@@ -8,13 +8,18 @@
 * [License](#license)
 
 ### What is the Silver Screenr?
-
-
+A website where you can look up a movie, add it to a watch list, and then add a review and a rating.
+<!-- Potentially adding additional content for following other users' watchlists and reviews. -->
+<!-- Potentially adding a script that generates random movie quotes for 404 pages -->
+<!-- Add a registration page -->
 ### Installation
 
 
 ### How to Use the Silver Screenr
-
+The landing page will have the options to login in or register a new user account.
+Registration page will collect a new username, email address and password when creating the account.
+The Dashboard will show movies that have been watched, rated and reviewed.
+<!-- The Dashboard will eventually contain a section to follow other users watched and rated histories -->
 
 
 ### Credits
@@ -23,4 +28,5 @@ Developed by Matthew Knudson, Chris Roberts, Tanner Shank, & Rob Tatro
 
 ### License
 
+Please refer to the [MIT License](https://opensource.org/licenses/MIT)[LICENSE](LICENSE) in the Silver Screenr repo.
 Please refer to the license in the Silver Screenr repo.
