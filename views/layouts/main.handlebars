@@ -9,7 +9,82 @@
 </head>
 
 <body>
-    
+    {{#if isAuthenticated}}
+        <!-- Display user information if authenticated -->
+        <p>Welcome, {{user.username}}!</p>
+        <a href="/logout">Logout</a>
+
+        <!-- Add section for user ratings -->
+        <section class="user-ratings">
+            <h2>Your Ratings</h2>
+            {{#if userRatings.length}}
+                <ul>
+                    {{#each userRatings}}
+                    <li>{{movie.title}} - Rated {{rating}} stars</li>
+                    <p>{{comment}}</p>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <p>No ratings yet! Start rating movies!</p>
+            {{/if}}
+        </section>
+
+    {{else}}
+        <!-- Display login form if not authenticated -->
+        <div class="login-box">
+            <h2>Login</h2>
+            <div class="user-box">
+                <input type="text" name="username">
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password">
+                <label>Password</label>
+            </div>
+            <button type="submit">
+                Submit
+            </button>
+        </div>
+    {{/if}}
+
+    <!-- Add movie listings section -->
+    <section class="movie-listings">
+        <h2>Now Showing</h2>
+        <!-- Display a list of movies with their details -->
+        {{#each movies}}
+            <div class="movie">
+                <img src="{{poster}}" alt="{{title}} Poster">
+                <h3>{{title}}</h3>
+                <p>{{description}}</p>
+            <!-- Add a link to view more details or rank the movie -->
+                {{#if isAuthenticated}}
+                <a href="/movies/{{id}}/rate">Rate this movie</a>
+                {{else}}
+                <p>Login to rate this movie</p>
+                {{/if}}
+            </div>
+        {{/each}}
+    </section>
+
+    <!-- Add a section for top-rated movies -->
+    <section class="top-rated">
+        <h2>Top Rated Movies</h2>
+        <!-- Display a list of top-rated movies -->
+        {{#each topRatedMovies}}
+            <div class="top-rated-movie">
+                <img src="{{poster}}" alt="{{title}} Poster">
+                <h3>{{title}}</h3>
+                <p>{{description}}</p>
+                <!-- Add a link to view more details or rate the movie -->
+                {{#if isAuthenticated}}
+                    <a href="/movies/{{id}}/rate">Rate this movie</a>
+                {{else}}
+                    <p>Login to rate this movie</p>
+                {{/if}}
+            </div>
+        {{/each}}
+    </section>
+
 </body>
 
 </html>
