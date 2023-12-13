@@ -19,6 +19,7 @@
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
     "mysql2": "^3.6.5",
+    "pg": "^8.11.3",
     "sequelize": "^6.35.1"
   }
 }
