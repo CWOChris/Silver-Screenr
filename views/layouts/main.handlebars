@@ -52,11 +52,11 @@
     <section class="movie-listings">
         <h2>Now Showing</h2>
         <!-- Display a list of movies with their details -->
-        {{#each movies}}
+        {{#each tmdbMovies}}
             <div class="movie">
-                <img src="{{poster}}" alt="{{title}} Poster">
+                <img src="{{poster_path}}" alt="{{title}} Poster">
                 <h3>{{title}}</h3>
-                <p>{{description}}</p>
+                <p>{{overview}}</p>
             <!-- Add a link to view more details or rank the movie -->
                 {{#if isAuthenticated}}
                 <a href="/movies/{{id}}/rate">Rate this movie</a>
