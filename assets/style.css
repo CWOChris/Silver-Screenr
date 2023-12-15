@@ -9,15 +9,19 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-
 .background {
     background-image: url("../images/Background-img.png"); 
     background-size: cover;
     background-position: center;
+    flex-grow: 1;
 }
 
 h2 {
     font-weight: bold;
+}
+
+.columns {
+    margin-top: 190px;
 }
 
 .column.is-4 {
@@ -52,6 +56,10 @@ input[type="text"], input[type="password"] {
     }
 
 .footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
     background-color: #f2f2f2;
     padding: 20px;
     text-align: center;
