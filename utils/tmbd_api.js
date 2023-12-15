@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const apiKey = 'f036e8a635074bcf8d2b06c0da966e1a';
+const apiKey = '';
 const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 
 
