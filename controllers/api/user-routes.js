@@ -104,5 +104,5 @@ router.post("/logout", (req, res) => {
 });
 
 module.exports = router;
-
+// Is the second line of the snippet below necessary?
 module.exports = router;
