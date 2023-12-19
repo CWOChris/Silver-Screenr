@@ -78,6 +78,6 @@ input[type="password"] {
   font-family: "Park Lane", sans-serif;
 }
 
-#large-letter::first-letter {
+.large-letter::first-letter {
   font-size: larger;
 }
