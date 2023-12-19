@@ -1,0 +1,18 @@
+<!-- Display user information if authenticated -->
+<p>Welcome, {{user.username}}!</p>
+<a href="/logout">Logout</a>
+
+<!-- Add section for user ratings -->
+<section class="user-ratings">
+    <h2>Your Ratings</h2>
+    {{#if userRatings.length}}
+    <ul>
+        {{#each userRatings}}
+        <li>{{movie.title}} - Rated {{rating}} stars</li>
+        <p>{{comment}}</p>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No ratings yet! Start rating movies!</p>
+    {{/if}}
+</section>
