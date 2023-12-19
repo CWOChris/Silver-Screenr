@@ -4,6 +4,9 @@ const { Movie, User } = require("../models");
 const express = require("express");
 const { authCheck } = require("../utils/auth");
 
+//const axios = require('axios');
+//const apiKey = process.env.API_KEY;
+
 //route to homepage/login
 router.get("/", async (req, res) => {
   // render in handlebars;
@@ -13,6 +16,25 @@ router.get("/", async (req, res) => {
 });
 
 // public page with all public movies
+// router.get("/public", async (req, res) => {
+// try {
+//    const response = await axios.get('${tmdbBaseUrl}/movie/popular', {
+//        params: {
+//           api_key: apiKey,
+//          },
+//      });
+//    };
+// });
+//  const tmdbMovies = response.data.results;
+//  res.render("homepage", {
+//    tmdbMovies,
+//    loggedIn: req.session.loggedIn,
+//  }); 
+// } catch (err) {
+//    console.log(err);
+//    res.status(500).json(err);  
+// }
+
 router.get("/public", async (req, res) => {
   try {
     const publicMovies = await Movie.findAll({
