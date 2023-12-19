@@ -14,8 +14,12 @@
     </button>
 
     <div>
-        <p>Not already registered? Click <button type="submit">here</button> to get signed up!</p>
+        <p>Not already registered? Click <button id="newUserButton" type="submit">here</button> to get signed up!</p>
     </div>
-
+    <script>
+        document.getElementById('newUserButton').onclick = function() {
+            window.location.href = '/signup';
+        };
+    </script>
 
 </div>
