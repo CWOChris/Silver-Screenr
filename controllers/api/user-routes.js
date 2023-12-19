@@ -30,10 +30,6 @@ router.get(
 
 //TODO: UPDATE user pref (public/private, update all movies) - auth required
 
-
-
-
-
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -103,6 +99,4 @@ router.post("/logout", (req, res) => {
   }
 });
 
-module.exports = router;
-// Is the second line of the snippet below necessary?
 module.exports = router;

@@ -1,3 +1,3 @@
 document.getElementById('newUserButton').onclick = function() {
-    window.location.href = '/signup';
+    window.location.href = './signup';
 };
