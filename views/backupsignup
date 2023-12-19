@@ -1,0 +1,66 @@
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <title>Silver Screenr</title>
+    <link rel="shortcut icon" type="image/jpg" href="./images/SilverScreenrFavicon.jpg" />
+</head> --}}
+
+<body>
+    <h1>New User Registration</h1>
+    <form action="/signup" method="POST">
+        <div class="">
+            <label>Username</label>
+            <div class="">
+                <input id="username=signup" type="text" name="username" placeholder="Enter a username">
+            </div>
+        </div>
+        <div class="">
+            <label>Password</label>
+            <div class="">
+                <input id="#password-signup" type="password" name="password" placeholder="Enter a password">
+            </div>
+        </div>
+        {{!-- Email and Password verifications commented out, if we have time, we will have a verification for email and
+        password --}}
+        {{!-- <div class="">
+            <label>Confirm Password</label>
+            <div class="">
+                <input type="password" name="confirmPassword" placeholder="Confirm your password">
+            </div>
+        </div> --}}
+        <div class="">
+            <label>Email</label>
+            <div class="">
+                <input id="email-signup" type="email" name="email" placeholder="Enter your email address">
+            </div>
+        </div>
+        {{!-- <div class="">
+            <label>Confirm Email</label>
+            <div class="">
+                <input type="email" name="confirmEmail" placeholder="Confirm your email address">
+            </div>
+        </div> --}}
+
+        {{!-- Later Later --}}
+        {{!-- <div class="">
+            <label>Country</label>
+            <div class="">
+                <input type="text" name="country" placeholder="Enter your country">
+            </div>
+        </div>
+        <div class="">
+            <label>Favorite Movie</label>
+            <div class="">
+                <input type="text" name="favoriteMovie" placeholder="Enter your favorite movie">
+            </div>
+        </div>
+        <div class="">
+            <label>Favorite Actor</label>
+            <div class="">
+                <input type="text" name="favoriteActor" placeholder="Enter your favorite actor"> --}}
+</body>

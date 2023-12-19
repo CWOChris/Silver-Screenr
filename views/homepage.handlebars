@@ -1,69 +1,4 @@
-{{!--
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-  <title>Silver Screenr</title>
-</head> --}}
-
-
-{{!-- Chris R added <form action=""> in line 11 To complet the object on the page --}}
-  {{!-- <form action="">
-    <section class="hero is-small is-dark">
-      <div class="hero-body">
-        <p class="title">
-          Silver Screenr
-        </p>
-        <p class="subtitle">
-          Your online cinema center
-        </p>
-      </div>
-    </section>
-
-    <div class="columns" id="login-box">
-      <div class="column is-two-thirds">
-        <p>Rate and review movies with thousands of other users!</p>
-      </div>
-      <div class="column is-4">
-        <h2>Login</h2>
-        <div class="user-box">
-          <input type="text" name="username">
-          <label>Username</label>
-        </div>
-        <div class="user-box">
-          <input type="password" name="password">
-          <label>Password</label>
-        </div>
-        <button type="submit">
-          Submit
-        </button>
-        {{!-- Add lines 41-43 for registration --}}
-        <div>
-          <p>Not already registered? Click <button type="submit">here</button> to get signed up!</p>
-        </div>
-  </form>
-  </div>
-  </div>
-
-
-  </body>
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Silver Screenr</strong> by The Producers. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-      </p>
-    </div>
-  </footer>
-
-</html> --}}
-
-<body>
+<div class="background">
   {{#if isAuthenticated}}
   {{> userpage}}
 
@@ -75,7 +10,4 @@
 
 
   {{> topmovies}}
-
-</body>
-
-{{> footer}}
+</div>
