@@ -16,24 +16,24 @@ router.get("/", async (req, res) => {
 });
 
 // public page with all public movies
-// router.get("/public", async (req, res) => {
-// try {
-//    const response = await axios.get('${tmdbBaseUrl}/movie/popular', {
-//        params: {
-//           api_key: apiKey,
-//          },
-//      });
-//    };
-// });
-//  const tmdbMovies = response.data.results;
-//  res.render("homepage", {
-//    tmdbMovies,
-//    loggedIn: req.session.loggedIn,
-//  }); 
-// } catch (err) {
-//    console.log(err);
-//    res.status(500).json(err);  
-// }
+router.get("/public", async (req, res) => {
+  try {
+    const response = await axios.get("${tmdbBaseUrl}/movie/popular", {
+      params: {
+        api_key: apiKey,
+      },
+    });
+
+    const tmdbMovies = response.data.results;
+    res.render("homepage", {
+      tmdbMovies,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.get("/public", async (req, res) => {
   try {
