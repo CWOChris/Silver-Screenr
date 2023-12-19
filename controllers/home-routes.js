@@ -86,15 +86,15 @@ router.get(
         movie.get({ plain: true })
       );
 
-      //render in handlebars
-      // res.render("userpage", {
-      //   allUserMovies,
-      //   loggedIn: req.session.loggedIn,
-      // });
+      // render in handlebars;
+      res.render("homepage", {
+        allUserMovies,
+        loggedIn: req.session.loggedIn,
+      });
 
       //comment this out if rendering in handlebars
-      console.log(allUserMovies);
-      res.status(200).json(allUserMovies);
+      // console.log(allUserMovies);
+      // res.status(200).json(allUserMovies);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
