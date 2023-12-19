@@ -66,3 +66,14 @@ input[type="password"] {
   padding: 20px;
   text-align: center;
 }
+
+/* Chris adding Park Lane font */
+
+@font-face {
+  font-family: "Park Lane";
+  src: url("/assets/fonts/ParkLaneNF.otf") format("opentype");
+}
+
+#parklaneFont {
+  font-family: "Park Lane", sans-serif;
+}
