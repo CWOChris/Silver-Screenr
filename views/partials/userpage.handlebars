@@ -8,7 +8,7 @@
     {{#if userRatings.length}}
     <ul>
         {{#each userRatings}}
-        <li>{{tmdb_id}} - Rated {{user_rating}} stars</li>
+        <li>{{movie_data.title}} - Rated {{user_rating}} stars</li>
         <p>{{user_comment}}</p>
         {{/each}}
     </ul>
