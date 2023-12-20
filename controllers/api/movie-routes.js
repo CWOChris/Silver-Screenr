@@ -7,7 +7,6 @@ const { authCheck } = require("../../utils/auth");
 const apiKey = process.env.API_KEY || API_KEY;
 const tmdbBaseUrl = "https://api.themoviedb.org/3";
 
-
 //find all
 router.get("/", async (req, res) => {
   try {
@@ -63,12 +62,24 @@ router.post("/", async (req, res) => {
 
     //   TODO: create API call that uses tmdb_id to pull an object for the movie
     const movieByIDUrl = "/movie/" + req.body.tmdb_id;
-      const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + API_KEY;
-      
-      
+    const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + apiKey;
+    let movieData = [];
+    const movieAPIdata = await fetch(fullURL, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        movieData = data;
+      });
+    const movieDataString = JSON.stringify(movieData);
+
+    console.log(movieData);
 
     const newMovie = {
-      movie_data: movieData,
+      movie_data: movieDataString,
       tmdb_id: req.body.tmdb_id,
       user_id: req.body.user_id,
       is_public: publicSetting.default_public,
