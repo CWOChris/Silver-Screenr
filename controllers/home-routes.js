@@ -10,7 +10,11 @@ const apiKey = process.env.API_KEY;
 //route to homepage
 router.get("/", async (req, res) => {
   // render in handlebars;
+
+
+
   res.render("homepage", {
+    user: req.session.userData,
     loggedIn: req.session.loggedIn,
   });
 });
@@ -121,6 +125,12 @@ router.get("/signup", (req, res) => {
 
   res.render("signup");
 });
+
+// router.use((req, res) => {
+//   res.render("errorpage", {
+//     loggedIn: req.session.loggedIn,
+//   });
+// });
 
 //TODO: User Preferences  - auth required
 
