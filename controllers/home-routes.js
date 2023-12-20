@@ -10,9 +10,9 @@ const apiKey = process.env.API_KEY;
 
 //route to homepage
 router.get("/", async (req, res) => {
-  const user = req.session.userData.id;
+  let userRatings = [];
   // render in handlebars;
-  const getRatings = async () => {
+  const getRatings = async (user) => {
     try {
       const userMovies = await Movie.findAll({
         where: {
@@ -29,7 +29,9 @@ router.get("/", async (req, res) => {
       return err;
     }
   };
-  const userRatings = await getRatings();
+  if (req.session.loggedIn) {
+    userRatings = await getRatings(req.session.userData.id);
+  }
   console.log("user data", req.session.userData);
   console.log("user ratings", userRatings);
   res.render("homepage", {

@@ -4,6 +4,10 @@ const { Movie, User } = require("../../models");
 const express = require("express");
 const { authCheck } = require("../../utils/auth");
 
+const apiKey = process.env.API_KEY || API_KEY;
+const tmdbBaseUrl = "https://api.themoviedb.org/3";
+
+
 //find all
 router.get("/", async (req, res) => {
   try {
@@ -54,11 +58,17 @@ router.post("/", async (req, res) => {
     const publicSettingData = await User.findByPk(req.body.user_id, {
       attributes: ["default_public"],
     });
-
     const publicSetting = publicSettingData.get({ plain: true });
     console.log(publicSetting);
 
+    //   TODO: create API call that uses tmdb_id to pull an object for the movie
+    const movieByIDUrl = "/movie/" + req.body.tmdb_id;
+      const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + API_KEY;
+      
+      
+
     const newMovie = {
+      movie_data: movieData,
       tmdb_id: req.body.tmdb_id,
       user_id: req.body.user_id,
       is_public: publicSetting.default_public,
