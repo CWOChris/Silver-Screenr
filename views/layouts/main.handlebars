@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <title>Silver Screenr</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/SilverScreenrFavicon.jpg" />
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
 
@@ -24,12 +24,8 @@
         </div>
         <div class="logout-containter">
             {{> login-logout}}
-        <div class="search-container">
-            <form class="search-form">
-                <input type="text" id="movie-search" placeholder="Search for movies">
-                <button type="submit">Search</button>
-            </form>
-        </div>
+            {{> searchbar}}
+
     </section>
 
 

@@ -106,3 +106,7 @@ input[type="email"] {
   position: relative;
   float: right;
 }
+
+.poster {
+  width: 100px;
+}

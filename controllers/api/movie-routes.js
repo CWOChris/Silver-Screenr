@@ -23,13 +23,13 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    console.log(publicMovies);
+    // console.log(publicMovies);
 
     const allPublicMovies = publicMovies.map((movie) =>
       movie.get({ plain: true })
     );
 
-    console.log(allPublicMovies);
+    // console.log(allPublicMovies);
     res.status(200).json(allPublicMovies);
   } catch (err) {
     console.log(err);
@@ -48,6 +48,56 @@ router.post("/", async (req, res) => {
   try {
     const matchCheck = await Movie.findAndCountAll({
       where: { tmdb_id: req.body.tmdb_id, user_id: req.body.user_id },
+    });
+    console.log(matchCheck);
+    if (matchCheck.count > 0) {
+      res.status(400).json("Movie Already Exists");
+      return;
+    }
+
+    const publicSettingData = await User.findByPk(req.body.user_id, {
+      attributes: ["default_public"],
+    });
+    const publicSetting = publicSettingData.get({ plain: true });
+    console.log(publicSetting);
+
+    //   TODO: create API call that uses tmdb_id to pull an object for the movie
+    const movieByIDUrl = "/movie/" + req.body.tmdb_id;
+    const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + apiKey;
+    let movieData = [];
+    const movieAPIdata = await fetch(fullURL, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        movieData = data;
+      });
+    const movieDataString = JSON.stringify(movieData);
+
+    console.log(movieData);
+
+    const newMovie = {
+      movie_data: movieDataString,
+      tmdb_id: req.body.tmdb_id,
+      user_id: req.body.user_id,
+      is_public: publicSetting.default_public,
+    };
+    await Movie.create(newMovie);
+
+    res.status(200).json(newMovie);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post(":id/:userId", async (req, res) => {
+  try {
+    const matchCheck = await Movie.findAndCountAll({
+      where: { tmdb_id: req.params.id, user_id: req.params.userId },
     });
     console.log(matchCheck);
     if (matchCheck.count > 0) {
@@ -159,26 +209,5 @@ router.delete("/unwatch/:id", async (req, res) => {
 });
 
 //New route for searching movies
-
-router.get("/search", async (req, res) => {
-  try {
-    const apiKey = 'process.env.API_KEY';
-    const query = req.query.query;
-
-    const response = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
-      params: {
-        api_key: apiKey,
-        query: query,
-      },
-    });
-
-  const searchResults = response.data.results;
-
-  res.status(200).json(searchResults);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error"});
-  }
-});
 
 module.exports = router;
