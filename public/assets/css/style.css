@@ -32,6 +32,13 @@ h2 {
   border-radius: 10px;
 }
 
+.column.is-8 {
+  background: white;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -48,7 +55,8 @@ input[type="email"] {
   cursor: pointer;
 }
 
-#login-box {
+#login-box,
+#signup-box {
   margin-top: 20px;
   max-width: 400px;
   margin-left: auto;
@@ -58,9 +66,10 @@ input[type="email"] {
   box-sizing: border-box;
 }
 
-#signup-box {
+#content-box {
   margin-top: 20px;
-  max-width: 400px;
+  min-height: 100%;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -91,4 +100,9 @@ input[type="email"] {
 
 .large-letter::first-letter {
   font-size: larger;
+}
+
+.logout-containter {
+  position: relative;
+  float: right;
 }

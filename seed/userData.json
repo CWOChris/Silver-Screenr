@@ -1,8 +1,8 @@
 [
   {
-    "username": "Test User",
-    "email": "test@test.test",
-    "password": "$2b$10$AUSai4ho.HBQt.IkpS9OtuRPdZGVsOmk2oqkp96ofaw//W6kxj7lS",
-    "default_public": "true"
+    "username": "dude face",
+    "email": "test2@test.test",
+    "password": "$2b$10$M4ccUSJAZcHE6WiggssR2uYKq/e/5cSl3SRO27luiuq9m..dMVGwe",
+    "default_public": "1"
   }
 ]

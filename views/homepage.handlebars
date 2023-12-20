@@ -1,14 +1,15 @@
 <div class="background">
-  {{> login-logout}}
+  <div class="columns">
+    <div class="column is-8" id="content-box">
 
-  {{#if loggedIn}}
-  {{> userpage}}
-  {{/if}}
+      {{#if loggedIn}}
+      {{> userpage}}
+      {{/if}}
 
-  {{> movielisting}}
+      {{> movielisting}}
 
 
-  {{> topmovies}}
+      {{> topmovies}}
+    </div>
+  </div>
 </div>
-
-{{> footer}}
