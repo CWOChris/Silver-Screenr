@@ -1,5 +1,7 @@
 # Silver Screenr
 
+![Silver Screenr Logo](public/assets/images/SilverScreener.png)
+
 https://silver-screenr.onrender.com/
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 
