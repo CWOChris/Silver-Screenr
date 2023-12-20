@@ -4,10 +4,10 @@ const { Movie, User } = require("../models");
 const express = require("express");
 const { authCheck } = require("../utils/auth");
 
-//const axios = require('axios');
-//const apiKey = process.env.API_KEY;
+const axios = require("axios");
+const apiKey = process.env.API_KEY;
 
-//route to homepage/login
+//route to homepage
 router.get("/", async (req, res) => {
   // render in handlebars;
   res.render("homepage", {

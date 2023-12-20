@@ -1,25 +1,36 @@
-<h1>New User Registration</h1>
-<form action="/api/users/" method="POST">
-    <div class="">
-        <label>Username</label>
-        <div class="">
-            <input id="username-signup" type="text" name="username" placeholder="Enter a username">
-        </div>
-    </div>
-    <div class="">
-        <label>Password</label>
-        <div class="">
-            <input id="#password-signup" type="password" name="password" placeholder="Enter a password">
-        </div>
-    </div>
+<div class="background">
+    <div class="columns">
+        <div class="column is-4" id="signup-box">
+            <h1>New User Registration</h1>
+            <form class="form signup-form">
+                <div class="user-box form-group">
+                    <label for="username-signup">Username</label>
+                    <input id="username-signup" type="text" placeholder="Enter a username" />
 
-    <div class="">
-        <label>Email</label>
-        <div class="">
-            <input id="email-signup" type="email" name="email" placeholder="Enter your email address">
+                </div>
+                <div class="user-box form-group">
+                    <label for="password-signup">Password</label>
+
+                    <input id="password-signup" type="password" placeholder="Enter a password" />
+
+                </div>
+
+                <div class="user-box form-group">
+                    <label for="email-signup">Email</label>
+
+                    <input id="email-signup" type="email" placeholder="Enter your email address" />
+
+                </div>
+                <div class="user-box form-group">
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                </div>
+
+                <div>
+                    <p>Already registered? Click <a href="../login">here</a> to log in!</p>
+                </div>
+
+            </form>
         </div>
     </div>
-    <button class="signup-form">Submit</button>
-
-    <script src="./assets/js/script.js"></script>
-</form>
+</div>
+<script src="./assets/js/signup.js"></script>

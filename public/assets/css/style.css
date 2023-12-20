@@ -33,7 +33,8 @@ h2 {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -48,6 +49,16 @@ input[type="password"] {
 }
 
 #login-box {
+  margin-top: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#signup-box {
   margin-top: 20px;
   max-width: 400px;
   margin-left: auto;

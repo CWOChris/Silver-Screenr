@@ -1,0 +1,27 @@
+<!-- Display login form if not authenticated -->
+<div class="background">
+    <div class="columns">
+        <div class="column is-4" id="login-box">
+            <h2>Login</h2>
+            <form class="form login-form">
+                <div class="user-box form-group">
+                    <input type="text" name="email" id="email-login">
+                    <label for="email-login">Email</label>
+                </div>
+                <div class="user-box form-group">
+                    <input type="password" name="password" id="password-login">
+                    <label for="password-login">Password</label>
+                </div>
+                <button class="button is-link is-light login-form" type="submit">
+                    Log In
+                </button>
+            </form>
+
+            <div>
+                <p>Not already registered? Click <a href="../signup">here</a> to get signed up!</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="./assets/js/login.js"></script>

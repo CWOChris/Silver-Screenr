@@ -1,9 +1,8 @@
 <div class="background">
-  {{#if isAuthenticated}}
-  {{> userpage}}
+  {{> login-logout}}
 
-  {{else}}
-  {{> login}}
+  {{#if loggedIn}}
+  {{> userpage}}
   {{/if}}
 
   {{> movielisting}}
