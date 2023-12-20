@@ -3,6 +3,9 @@
 ![Silver Screenr Logo](public/assets/images/SilverScreener.png)
 
 https://silver-screenr.onrender.com/
+
+![Image description](public\assets\images\Silver-Screenr.png)
+
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 
 ## Table of Contents
