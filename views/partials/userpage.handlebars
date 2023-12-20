@@ -8,6 +8,9 @@
     {{#if userRatings.length}}
     <ul>
         {{#each userRatings}}
+        <img src="https://image.tmdb.org/t/p/w500/{{movie_data.poster_path}}" alt="{{movie_data.title}} Poster"
+            class="poster" data-movie-id="{{id}}">
+
         <li>{{movie_data.title}} - Rated {{user_rating}} stars</li>
         <p>{{user_comment}}</p>
         {{/each}}
