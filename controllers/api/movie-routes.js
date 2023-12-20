@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const { Movie, User } = require("../../models");
+const axios = require("axios");
 
 const express = require("express");
 const { authCheck } = require("../../utils/auth");
 
 const apiKey = process.env.API_KEY || API_KEY;
 const tmdbBaseUrl = "https://api.themoviedb.org/3";
-
 
 //find all
 router.get("/", async (req, res) => {
@@ -63,12 +63,24 @@ router.post("/", async (req, res) => {
 
     //   TODO: create API call that uses tmdb_id to pull an object for the movie
     const movieByIDUrl = "/movie/" + req.body.tmdb_id;
-      const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + API_KEY;
-      
-      
+    const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + apiKey;
+    let movieData = [];
+    const movieAPIdata = await fetch(fullURL, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        movieData = data;
+      });
+    const movieDataString = JSON.stringify(movieData);
+
+    console.log(movieData);
 
     const newMovie = {
-      movie_data: movieData,
+      movie_data: movieDataString,
       tmdb_id: req.body.tmdb_id,
       user_id: req.body.user_id,
       is_public: publicSetting.default_public,
@@ -144,6 +156,29 @@ router.delete("/unwatch/:id", async (req, res) => {
       res.status(200).json(movieDeleted);
     })
     .catch((err) => res.json(err));
+});
+
+//New route for searching movies
+
+router.get("/search", async (req, res) => {
+  try {
+    const apiKey = 'process.env.API_KEY';
+    const query = req.query.query;
+
+    const response = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
+      params: {
+        api_key: apiKey,
+        query: query,
+      },
+    });
+
+  const searchResults = response.data.results;
+
+  res.status(200).json(searchResults);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error"});
+  }
 });
 
 module.exports = router;

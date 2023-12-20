@@ -32,6 +32,13 @@ router.get("/", async (req, res) => {
   if (req.session.loggedIn) {
     userRatings = await getRatings(req.session.userData.id);
   }
+  console.log(userRatings);
+  if (userRatings.length) {
+    userRatings.forEach((el) => {
+      el.movie_data = JSON.parse(el.movie_data);
+    });
+  }
+
   console.log("user data", req.session.userData);
   console.log("user ratings", userRatings);
   res.render("homepage", {
