@@ -11,6 +11,10 @@ Movie.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    movie_data: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     tmdb_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

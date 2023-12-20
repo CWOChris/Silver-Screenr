@@ -3,17 +3,37 @@ const { Movie, User } = require("../models");
 
 const express = require("express");
 const { authCheck } = require("../utils/auth");
+const { getUserMovies } = require("../utils/data");
 
 const axios = require("axios");
 const apiKey = process.env.API_KEY;
 
 //route to homepage
 router.get("/", async (req, res) => {
+  const user = req.session.userData.id;
   // render in handlebars;
+  const getRatings = async () => {
+    try {
+      const userMovies = await Movie.findAll({
+        where: {
+          user_id: user,
+        },
+      });
 
+      const allUserMovies = userMovies.map((movie) =>
+        movie.get({ plain: true })
+      );
 
-
+      return allUserMovies;
+    } catch (err) {
+      return err;
+    }
+  };
+  const userRatings = await getRatings();
+  console.log("user data", req.session.userData);
+  console.log("user ratings", userRatings);
   res.render("homepage", {
+    userRatings,
     user: req.session.userData,
     loggedIn: req.session.loggedIn,
   });
