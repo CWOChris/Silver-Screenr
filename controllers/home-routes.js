@@ -4,6 +4,7 @@ const { Movie, User } = require("../models");
 const express = require("express");
 const { authCheck } = require("../utils/auth");
 const { getUserMovies } = require("../utils/data");
+const tmdbBaseUrl = "https://api.themoviedb.org/3";
 
 const axios = require("axios");
 const apiKey = process.env.API_KEY;
@@ -32,15 +33,15 @@ router.get("/", async (req, res) => {
   if (req.session.loggedIn) {
     userRatings = await getRatings(req.session.userData.id);
   }
-  console.log(userRatings);
+  // console.log(userRatings);
   if (userRatings.length) {
     userRatings.forEach((el) => {
       el.movie_data = JSON.parse(el.movie_data);
     });
   }
 
-  console.log("user data", req.session.userData);
-  console.log("user ratings", userRatings);
+  // console.log("user data", req.session.userData);
+  // console.log("user ratings", userRatings);
   res.render("homepage", {
     userRatings,
     user: req.session.userData,
@@ -164,5 +165,96 @@ router.get("/signup", (req, res) => {
 //TODO: User Preferences  - auth required
 
 //TODO: routes for sorted movie data? added on date, watched/reviewed date
+
+//route for search
+
+router.get("/search/:query", async (req, res) => {
+  let searchResults = {};
+  try {
+    const apiKey = process.env.API_READ_ACCESS_TOKEN || API_READ_ACCESS_TOKEN;
+    const query = req.params.query;
+
+    await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        searchResults = data.results;
+      })
+      .catch((err) => console.error(err));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+
+  console.log(req.session.loggedIn);
+  res.render("searchpage", {
+    searchResults,
+
+    loggedIn: req.session.loggedIn,
+  });
+});
+
+router.get("/add/:id", authCheck, async (req, res) => {
+  const userID = req.session.userData.id;
+  const tmdbID = req.params.id;
+  try {
+    const matchCheck = await Movie.findAndCountAll({
+      where: { tmdb_id: tmdbID, user_id: userID },
+    });
+    console.log(matchCheck);
+    if (matchCheck.count > 0) {
+      res.status(400).json("Movie Already Exists");
+      return;
+    }
+
+    const publicSettingData = await User.findByPk(userID, {
+      attributes: ["default_public"],
+    });
+    const publicSetting = publicSettingData.get({ plain: true });
+    console.log(publicSetting);
+
+    //   TODO: create API call that uses tmdb_id to pull an object for the movie
+    const movieByIDUrl = "/movie/" + tmdbID;
+    const fullURL = tmdbBaseUrl + movieByIDUrl + "?api_key=" + apiKey;
+    let movieData = [];
+    await fetch(fullURL, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        movieData = data;
+      });
+    const movieDataString = JSON.stringify(movieData);
+
+    console.log(movieData);
+
+    const newMovie = {
+      movie_data: movieDataString,
+      tmdb_id: tmdbID,
+      user_id: userID,
+      is_public: publicSetting.default_public,
+    };
+    console.log(newMovie);
+    await Movie.create(newMovie);
+
+    res.status(200).redirect("/");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
