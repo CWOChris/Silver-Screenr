@@ -1,5 +1,7 @@
 # Silver Screenr
 
+![Silver Screenr Logo](public/assets/images/SilverScreener.png)
+
 https://silver-screenr.onrender.com/
 
 ![Image description](public\assets\images\Silver-Screenr.png)
