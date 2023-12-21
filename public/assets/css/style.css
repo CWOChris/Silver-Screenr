@@ -110,3 +110,7 @@ input[type="email"] {
 .poster {
   width: 100px;
 }
+
+#submitButton {
+  margin-bottom: 20px;
+}

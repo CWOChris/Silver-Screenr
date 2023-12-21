@@ -6,8 +6,8 @@
                 <!-- Display a list of movies with their details -->
                 {{#each searchResults}}
                 {{> movieblock}}
-
-                <a href="../add/{{id}}">Add to watchlist</a>
+                {{!-- Moving the link below to the search results card - CR --}}
+                {{!-- <a href="../add/{{id}}">Add to watchlist</a> --}}
 
 
                 {{/each}}
