@@ -1,12 +1,24 @@
-<div class="movie">
-    <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{title}} Poster" class="poster"
-        data-movie-id="{{id}}">
-    <h3>{{title}}</h3>
-    <p>{{overview}}</p>
+<div class="column is-one-third">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-4by5">
+                <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{title}} Poster" class="poster" data-movie-id="{{id}}">
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">{{title}}</p>
+                    <p class="subtitle is-5">{{release_date}}</p>
+                    <p class="subtitle is-6">{{overview}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
     <!-- Add a link to view more details or rank the movie -->
     {{!-- {{#if loggedIn}} --}}
     
     {{!-- {{else}} --}}
     {{!-- <a href="/login">Login to rate this movie</a> --}}
     {{!-- {{/if}} --}}
-</div>
