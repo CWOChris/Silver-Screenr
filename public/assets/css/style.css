@@ -111,6 +111,6 @@ input[type="email"] {
   width: 100px;
 }
 
-#submitButton {
-  margin-bottom: 20px;
+#movie-search {
+  width: 200px;
 }
