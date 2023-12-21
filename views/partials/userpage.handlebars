@@ -16,7 +16,7 @@
         <li>{{movie_data.title}} - Rated
             <form class="form signup-form">
                 <div class="user-box form-group">
-                    <input id="rating-input" type="number" placeholder="0 to 5 stars">
+                    <input id="rating-input" type="number" min="0" max="5" placeholder="0 to 5 stars">
                 </div>
             </form> stars</li>
         <p>
@@ -25,7 +25,7 @@
                     <label for="comment-input">Movie Comments</label>
                     <input type="text" id="comment-input" placeholder="Enter your comment here">
                 </div>
-                <button class="button is-link is-light login-form" type="submit">
+                <button class="button is-link is-light login-form" id="submitButton" type="submit">
                     Submit Comment
                 </button>
             </form>
