@@ -18,12 +18,10 @@
 
 
                 {{#if user_rating}}
-                <input id="rating-input-{{id}}" type="number" value="{{user_rating}}">
-            </li>
+                <input id="rating-input-{{id}}" style="width: 40px;" type="number" value="{{user_rating}}">
             {{else}}
-            <input id="rating-input-{{id}}" type="number" placeholder="0 to 5 stars">
+            <input id="rating-input-{{id}}" style="width: 40px;" type="number" min="0" max="5" placeholder="0 to 5 stars">
             {{/if}}
-
             stars
             </li>
 
@@ -32,12 +30,12 @@
             <label for="comment-input">Movie Comments</label>
 
             {{#if user_comment}}
-            <input type="text" id="comment-input-{{id}}" value="{{user_comment}}">
+            <input type="text" style="width: 400px;" id="comment-input-{{id}}" value="{{user_comment}}">
             {{else}}
-            <input type="text" id="comment-input-{{id}}" placeholder="Enter Your comment here">
+            <input type="text" style="width: 400px;" id="comment-input-{{id}}" placeholder="Enter Your comment here">
             {{/if}}
 
-            <button class=" button is-link is-light login-form" id="{{id}}">
+            <button class="button is-link is-light login-form" id="{{id}}">
                 Submit Comment
             </button>
 
