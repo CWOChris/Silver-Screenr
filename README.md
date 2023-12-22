@@ -4,8 +4,6 @@
 
 https://silver-screenr.onrender.com/
 
-![Image description](public\assets\images\Silver-Screenr.png)
-
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 
 ## Table of Contents
@@ -19,7 +17,7 @@ https://silver-screenr.onrender.com/
 A website where you can look up a movie, add it to a watch list, and then add a review and a rating.
 
 ### Installation
-Node, Express, Sequelize, MySQL2, and Handlebars.
+Node, Express, Sequelize, MySQL2, Axios and Handlebars.
 
 ### How to Use the Silver Screenr
 The landing page will have the options to login in or register a new user account.
